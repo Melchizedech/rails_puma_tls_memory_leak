@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Build the image with 
 
-Things you may want to cover:
+docker build -t rails_api_tls_memory_leak .
 
-* Ruby version
+Run the image with 
 
-* System dependencies
+```
+docker run --rm -e RAILS_ENV=production -p 3000:3000 -p 3500:3500 rails_api_tls_memory_leak
+```
 
-* Configuration
+Port 3000 is bound to HTTPS, 3500 to HTTP.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

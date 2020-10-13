@@ -4,13 +4,23 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum; this matches the default thread size of Active Record.
 #
-max_threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
-min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
-threads min_threads_count, max_threads_count
+
+threads 1, 1
+workers 1
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port        ENV.fetch("PORT") { 3000 }
+
+
+ssl_bind '0.0.0.0', 3000, {
+    key: "certificates/certificate.key",
+    cert: "certificates/certificate.crt",
+    verify_mode: 'none',
+    no_tlsv1: true,
+    no_tlsv1_1: true
+  }
+
+bind 'tcp://0.0.0.0:3500'
 
 # Specifies the `environment` that Puma will run in.
 #
