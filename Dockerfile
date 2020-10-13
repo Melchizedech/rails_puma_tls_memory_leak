@@ -11,5 +11,5 @@ EXPOSE 3000
 EXPOSE 3500
 
 # Start the main process.
-CMD ["rails", "s"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb", "hello.ru"]
 
